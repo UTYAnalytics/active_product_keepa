@@ -642,11 +642,15 @@ with tempfile.TemporaryDirectory() as download_dir:
 
 
 if __name__ == "__main__":
+    print("begin")
     # Extract retailer_ids from the result
     seller_id = "A10RWILGPNWWBU"
+    print("exporting.....")
     export_file(seller_id)
 
     print("Get newest file")
     newest_file_path = get_newest_file(download_dir)
+
     data = transform_data(newest_file_path)
+
     insert_to_database(data)
