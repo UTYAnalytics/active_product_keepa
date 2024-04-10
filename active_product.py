@@ -616,9 +616,6 @@ with tempfile.TemporaryDirectory() as download_dir:
     # and if it doesn't exist, download it automatically,
     # then add chromedriver to path
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_experimental_option("useAutomationExtension", False)
-    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-
     prefs = {
         "download.default_directory": download_dir,
         "download.prompt_for_download": False,
@@ -627,19 +624,19 @@ with tempfile.TemporaryDirectory() as download_dir:
     }
     options = [
         # Define window size here
-        "--window-size=1920,1080",
         "--ignore-certificate-errors",
         "--headless=new",
         "--disable-gpu",
         "--no-sandbox",
         "--disable-dev-shm-usage",
+        "--window-size=1920,1080",
     ]
     chrome_options.add_experimental_option("prefs", prefs)
-    for option in options:
-        chrome_options.add_argument(option)
-
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_service = Service(os.environ.get("CHROMEDRIVER_PATH"))
+    # chrome_service = Service()
+    for option in options:
+        chrome_options.add_argument(option)
 
 
 if __name__ == "__main__":
