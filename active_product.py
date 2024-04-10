@@ -83,7 +83,7 @@ def get_otp_from_email(server, email_address, email_password, subject_filter):
 
 def export_file(seller_id):
     # Initialize the Chrome driver with the options
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
     # Open Keepa
     driver.get("https://keepa.com/#!")
@@ -637,7 +637,7 @@ with tempfile.TemporaryDirectory() as download_dir:
     chrome_options.add_experimental_option("prefs", prefs)
     for option in options:
         chrome_options.add_argument(option)
-        
+
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_service = Service(os.environ.get("CHROMEDRIVER_PATH"))
 
