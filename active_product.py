@@ -83,8 +83,10 @@ def get_otp_from_email(server, email_address, email_password, subject_filter):
 
 def export_file(seller_id):
     # Initialize the Chrome driver with the options
+    print("Create chrome driver")
     driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 
+    print("open keepa")
     # Open Keepa
     driver.get("https://keepa.com/#!")
     time.sleep(20)
