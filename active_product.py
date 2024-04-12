@@ -91,7 +91,7 @@ def export_file(seller_id):
     driver.get("https://keepa.com/#!")
     time.sleep(20)
 
-    wait = WebDriverWait(driver, 2000000)
+    wait = WebDriverWait(driver, 20)
     # Login process
     try:
         login_button = wait.until(
