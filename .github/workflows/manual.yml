@@ -2,8 +2,8 @@ name: Run Selenium On GitHub Action
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "00 01 * * *"
+  # schedule:
+  #   - cron: "00 01 * * *"
 
 jobs:
   #   bundle_smartscounts:
